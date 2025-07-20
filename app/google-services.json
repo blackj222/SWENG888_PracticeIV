@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "977614122099",
+    "project_id": "psu-android-app---practice-iv",
+    "storage_bucket": "psu-android-app---practice-iv.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977614122099:android:13db1424e07a8c7eb58e06",
+        "android_client_info": {
+          "package_name": "edu.psu.sweng888.practiceiv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuzyU5Civ4jv4A75_6BSSyCX4wEXNKQy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
