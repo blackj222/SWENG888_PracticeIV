@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "977614122099",
+    "firebase_url": "https://psu-android-app---practice-iv-default-rtdb.firebaseio.com",
     "project_id": "psu-android-app---practice-iv",
     "storage_bucket": "psu-android-app---practice-iv.firebasestorage.app"
   },
@@ -12,7 +13,20 @@
           "package_name": "edu.psu.sweng888.practiceiv"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "977614122099-t228d6o57tcjpc6s7647rc9v2o3phts6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.psu.sweng888.practiceiv",
+            "certificate_hash": "7f36bc112f563feadae36132cd3464f1a8d7eb37"
+          }
+        },
+        {
+          "client_id": "977614122099-fvcajcqv3uql0oejtao8qvt3cmqald6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBuzyU5Civ4jv4A75_6BSSyCX4wEXNKQy4"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977614122099-fvcajcqv3uql0oejtao8qvt3cmqald6r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

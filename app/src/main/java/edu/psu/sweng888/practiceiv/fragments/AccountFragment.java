@@ -1,0 +1,44 @@
+package edu.psu.sweng888.practiceiv.fragments;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import edu.psu.sweng888.practiceiv.R;
+
+public class AccountFragment extends Fragment {
+
+    private TextView textViewName;
+    private TextView textViewEmail;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        textViewName = view.findViewById(R.id.textViewAccountName);
+        textViewEmail = view.findViewById(R.id.textViewAccountEmail);
+
+        // Get current Firebase user
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // If you stored the display name during registration, you could fetch it from database
+            textViewName.setText("Name: " + (user.getDisplayName() != null ? user.getDisplayName() : "Not set"));
+            textViewEmail.setText("Email: " + user.getEmail());
+        }
+
+        return view;
+    }
+}
