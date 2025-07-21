@@ -1,5 +1,7 @@
 package edu.psu.sweng888.practiceiv.models;
 
+// The Product class is a data model that represents an item stored in Firebase and displayed in your app.
+
 public class Product {
 
     private String id;
@@ -7,7 +9,7 @@ public class Product {
     private String description;
     private double price;
 
-    // ✅ Empty constructor is required for Firebase deserialization
+
     public Product() {
     }
 
@@ -18,7 +20,7 @@ public class Product {
         this.price = price;
     }
 
-    // ✅ Getters and Setters (Firebase uses these for mapping)
+    // Getters and Setters (Firebase uses these for mapping)
     public String getId() {
         return id;
     }

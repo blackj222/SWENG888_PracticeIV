@@ -1,6 +1,5 @@
 package edu.psu.sweng888.practiceiv.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import edu.psu.sweng888.practiceiv.LoginActivity;
 import edu.psu.sweng888.practiceiv.R;
-import edu.psu.sweng888.practiceiv.RegisterActivity;
 import edu.psu.sweng888.practiceiv.adapters.ProductAdapter;
 import edu.psu.sweng888.practiceiv.models.Product;
 
@@ -68,6 +65,7 @@ public class ItemsFragment extends Fragment {
         return view;
     }
 
+    // Listen for changes in the "products" node and update list
     private void loadProducts() {
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override

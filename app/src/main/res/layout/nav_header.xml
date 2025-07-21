@@ -12,7 +12,7 @@
         android:id="@+id/textViewUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Name"
+        android:text="@string/user_name"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -22,7 +22,7 @@
         android:id="@+id/textViewUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="user@example.com"
+        android:text="@string/user_example_com"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:layout_marginTop="4dp" />

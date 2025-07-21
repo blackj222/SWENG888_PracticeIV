@@ -34,9 +34,12 @@ public class AccountFragment extends Fragment {
         // Get current Firebase user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            // If you stored the display name during registration, you could fetch it from database
-            textViewName.setText("Name: " + (user.getDisplayName() != null ? user.getDisplayName() : "Not set"));
-            textViewEmail.setText("Email: " + user.getEmail());
+            // Fetches display name from database if stored during registration
+            String nameString = "Name: " + (user.getDisplayName() != null ? user.getDisplayName() : "Not set");
+            String emailString = "Email: " + user.getEmail();
+
+            textViewName.setText(nameString);
+            textViewEmail.setText(emailString);
         }
 
         return view;

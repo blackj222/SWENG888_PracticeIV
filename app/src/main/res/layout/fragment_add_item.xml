@@ -13,7 +13,7 @@
             android:id="@+id/editTextItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Item name"
+            android:hint="@string/item_name"
             android:inputType="textPersonName"
             android:layout_marginBottom="16dp" />
 
@@ -21,7 +21,7 @@
             android:id="@+id/editTextItemDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description"
+            android:hint="@string/description"
             android:inputType="textMultiLine"
             android:lines="3"
             android:layout_marginBottom="16dp" />
@@ -30,7 +30,7 @@
             android:id="@+id/editTextItemPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Price"
+            android:hint="@string/price"
             android:inputType="numberDecimal"
             android:layout_marginBottom="24dp" />
 
@@ -38,7 +38,7 @@
             android:id="@+id/buttonSaveItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save Item" />
+            android:text="@string/save_item" />
 
     </LinearLayout>
 </ScrollView>

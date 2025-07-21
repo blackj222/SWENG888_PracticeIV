@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int SPLASH_DELAY = 2000; // 2 seconds
+    private static final int SPLASH_DELAY = 2000; // 2 seconds delay
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

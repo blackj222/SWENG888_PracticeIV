@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,7 +16,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // Firebase Authentication instance
     private FirebaseAuth mAuth;
+
+    // UI fields
     private EditText editTextEmail, editTextPassword;
     private Button buttonLogin;
     private TextView textViewSignup;
@@ -27,48 +29,64 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        // Bind UI elements
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewSignup = findViewById(R.id.textViewSignup);
 
+        // Binds buttonLogin to attemptLogin() method
         buttonLogin.setOnClickListener(v -> attemptLogin());
 
+        // Allows user to sign up
         textViewSignup.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
     }
 
+    /**
+     * Called when the login button is clicked.
+     * Validates input and tries to sign in with Firebase Authentication.
+     */
     private void attemptLogin() {
+        // Get the input values and trim whitespace
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
+        // Validate email
         if (TextUtils.isEmpty(email)) {
             editTextEmail.setError("Email is required");
             return;
         }
+        // Validate password
         if (TextUtils.isEmpty(password)) {
             editTextPassword.setError("Password is required");
             return;
         }
 
-        // Sign in with Firebase Auth
+        // Attempt to sign in with Firebase
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+                        // Successfully signed in
                         FirebaseUser user = mAuth.getCurrentUser();
                         Log.d("LoginActivity", "signInWithEmail:success");
-                        Toast.makeText(LoginActivity.this, "Welcome " + (user != null ? user.getEmail() : ""), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,
+                                "Welcome " + (user != null ? user.getEmail() : ""),
+                                Toast.LENGTH_SHORT).show();
 
-                        // Go to MainActivity
+                        // Navigate to MainActivity and close LoginActivity
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish(); // Close LoginActivity
+                        finish();
                     } else {
+                        // Sign in failed, log the error and show a message
                         Log.w("LoginActivity", "signInWithEmail:failure", task.getException());
-                        Toast.makeText(LoginActivity.this, "Authentication failed: " +
+                        Toast.makeText(LoginActivity.this,
+                                "Authentication failed: " +
                                         (task.getException() != null ? task.getException().getMessage() : ""),
                                 Toast.LENGTH_LONG).show();
                     }
@@ -78,9 +96,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // If already signed in, skip login
+        // Check if the user is already signed in
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            // If so, skip the login screen and go directly to MainActivity
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }

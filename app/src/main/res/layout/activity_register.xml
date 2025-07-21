@@ -14,40 +14,60 @@
             android:id="@+id/goBackButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Go Back"
+            android:text="@string/go_back"
             />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="@string/full_name"/>
         <EditText
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
+            android:hint="@string/full_name"
+            android:autofillHints="name"
             android:inputType="textPersonName"
             android:padding="12dp" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="@string/email"/>
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/email"
+            android:autofillHints="emailAddress"
             android:inputType="textEmailAddress"
             android:padding="12dp"
             android:layout_marginTop="12dp" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="@string/password"/>
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
+            android:autofillHints="password"
             android:inputType="textPassword"
             android:padding="12dp"
             android:layout_marginTop="12dp" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="@string/confirm_password"/>
         <EditText
             android:id="@+id/editTextConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
+            android:autofillHints="password"
             android:inputType="textPassword"
             android:padding="12dp"
             android:layout_marginTop="12dp" />
@@ -56,14 +76,7 @@
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
-            android:layout_marginTop="16dp" />
-
-        <Button
-            android:id="@+id/buttonRegister2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Register 2"
+            android:text="@string/register"
             android:layout_marginTop="16dp" />
 
         <ProgressBar

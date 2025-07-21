@@ -1,43 +1,59 @@
 package edu.psu.sweng888.practiceiv.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+
+import java.util.Locale;
 
 import edu.psu.sweng888.practiceiv.R;
 
 public class SettingsFragment extends Fragment {
 
-    private Switch languageSwitch;
+    private SwitchCompat switchLanguage; // toggle to switch between languages
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        // Inflate the settings layout
+        return inflater.inflate(R.layout.fragment_settings, container, false);
+    }
 
-        languageSwitch = view.findViewById(R.id.switchLanguage);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        // Example setting: switch between English and another language
-        languageSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                Toast.makeText(getContext(), "Language switched: Spanish", Toast.LENGTH_SHORT).show();
-                // TODO: implement actual language change
-            } else {
-                Toast.makeText(getContext(), "Language switched: English", Toast.LENGTH_SHORT).show();
-                // TODO: implement actual language change
-            }
+        switchLanguage = view.findViewById(R.id.switchLanguage);
+
+        // Get saved language code (default to device language)
+        SharedPreferences prefs = requireActivity()
+                .getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        String savedLang = prefs.getString("app_lang", Locale.getDefault().getLanguage());
+
+        // Set switch state based on saved language
+        switchLanguage.setChecked(savedLang.equals("fr"));
+
+        // Save selected language and refresh activity
+        switchLanguage.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            saveLanguage(isChecked ? "fr" : "en");
+            requireActivity().recreate();
         });
+    }
 
-        return view;
+    // Save chosen language to preferences
+    private void saveLanguage(String langCode) {
+        SharedPreferences prefs = requireActivity()
+                .getSharedPreferences("app_settings", Context.MODE_PRIVATE);
+        prefs.edit().putString("app_lang", langCode).apply();
     }
 }
